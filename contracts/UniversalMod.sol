@@ -6,7 +6,7 @@ import "@zetachain/protocol-contracts/contracts/zevm/interfaces/UniversalContrac
 import "@zetachain/protocol-contracts/contracts/zevm/interfaces/IGatewayZEVM.sol";
 import "@zetachain/protocol-contracts/contracts/zevm/GatewayZEVM.sol";
 
-contract Universal is UniversalContract {
+contract UniversalMod is UniversalContract {
 	GatewayZEVM public immutable gateway;
 
 	string[] public receiveQueue;
@@ -121,5 +121,10 @@ contract Universal is UniversalContract {
 		RevertContext calldata revertContext
 	) external onlyGateway {
 		emit RevertEvent("Revert on ZetaChain", revertContext);
+	}
+
+	function getElement(uint index) public view returns (string memory) {
+		require(index < receiveQueue.length, "Index out of bounds");
+		return receiveQueue[index];
 	}
 }
