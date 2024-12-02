@@ -10,6 +10,7 @@ contract UniversalMod is UniversalContract {
 	GatewayZEVM public immutable gateway;
 
 	string[] public receiveQueue;
+	string[] public sendQueue;
 
 	event HelloEvent(string, string);
 	event RevertEvent(string, RevertContext);
@@ -41,6 +42,7 @@ contract UniversalMod is UniversalContract {
 		}
 		IZRC20(zrc20).approve(address(gateway), gasFee);
 		gateway.call(receiver, zrc20, message, callOptions, revertOptions);
+		sendQueue.push(abi.decode(message, (string)));
 	}
 
 	function withdraw(
@@ -123,8 +125,11 @@ contract UniversalMod is UniversalContract {
 		emit RevertEvent("Revert on ZetaChain", revertContext);
 	}
 
-	function getElement(uint index) public view returns (string memory) {
-		require(index < receiveQueue.length, "Index out of bounds");
-		return receiveQueue[index];
+	function getReceivedQueue() public view returns (string[] memory) {
+		return receiveQueue;
+	}
+
+	function getSendQueue() public view returns (string[] memory) {
+		return sendQueue;
 	}
 }
