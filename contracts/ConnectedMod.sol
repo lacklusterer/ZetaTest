@@ -5,10 +5,12 @@ import {RevertContext} from "@zetachain/protocol-contracts/contracts/Revert.sol"
 import "@zetachain/protocol-contracts/contracts/evm/GatewayEVM.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-contract Connected {
+contract ConnectedMod {
 	using SafeERC20 for IERC20; // Use SafeERC20 for IERC20 operations
 
 	GatewayEVM public immutable gateway;
+
+	string[] public receiveQueue;
 
 	event RevertEvent(string, RevertContext);
 	event HelloEvent(string, string);
@@ -76,6 +78,7 @@ contract Connected {
 
 	function hello(string memory message) external payable {
 		emit HelloEvent("Hello on EVM", message);
+		receiveQueue.push(message);
 	}
 
 	function onCall(
@@ -90,6 +93,10 @@ contract Connected {
 		RevertContext calldata revertContext
 	) external onlyGateway {
 		emit RevertEvent("Revert on EVM", revertContext);
+	}
+
+	function getReceivedQueue() public view returns (string[] memory) {
+		return receiveQueue;
 	}
 
 	receive() external payable {}
