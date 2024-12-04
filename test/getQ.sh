@@ -12,3 +12,5 @@ npx hardhat call-function \
 	--contract 0xFD471836031dc5108809D173A067e8486B9047A3 \
 	--name ConnectedMod \
 	--network localhost
+
+wait

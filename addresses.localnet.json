@@ -1,0 +1,104 @@
+{
+	"addresses": [
+		{
+			"type": "gatewayZEVM",
+			"network": "zetachain",
+			"address": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
+		},
+		{
+			"type": "systemContract",
+			"network": "zetachain",
+			"address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+		},
+		{
+			"type": "wzeta",
+			"network": "zetachain",
+			"address": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+		},
+		{
+			"type": "uniswapFactoryInstance",
+			"network": "zetachain",
+			"address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+		},
+		{
+			"type": "uniswapRouterInstance",
+			"network": "zetachain",
+			"address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+		},
+		{
+			"type": "ZRC-20 ETH on 5",
+			"network": "zetachain",
+			"address": "0x2ca7d64A7EFE2D62A725E2B35Cf7230D6677FfEe"
+		},
+		{
+			"type": "ZRC-20 USDC on 5",
+			"network": "zetachain",
+			"address": "0xd97B1de3619ed2c6BEb3860147E30cA8A7dC9891"
+		},
+		{
+			"type": "ZRC-20 bnb on 97",
+			"network": "zetachain",
+			"address": "0x65a45c57636f9BcCeD4fe193A602008578BcA90b"
+		},
+		{
+			"type": "ZRC-20 USDC on 97",
+			"network": "zetachain",
+			"address": "0x05BA149A7bd6dC1F937fA9046A9e05C05f3b18b0"
+		},
+		{
+			"type": "tss",
+			"network": "zetachain",
+			"address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+		},
+		{
+			"type": "ERC-20 USDC",
+			"network": "ethereum",
+			"address": "0xE6E340D132b5f46d1e472DebcD681B2aBc16e57E"
+		},
+		{
+			"type": "zetaConnector",
+			"network": "ethereum",
+			"address": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e"
+		},
+		{
+			"type": "gatewayEVM",
+			"network": "ethereum",
+			"address": "0x610178dA211FEF7D417bC0e6FeD39F05609AD788"
+		},
+		{
+			"type": "custody",
+			"network": "ethereum",
+			"address": "0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0"
+		},
+		{
+			"type": "testEVMZeta",
+			"network": "ethereum",
+			"address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6"
+		},
+		{
+			"type": "ERC-20 USDC",
+			"network": "bnb",
+			"address": "0x36C02dA8a0983159322a80FFE9F24b1acfF8B570"
+		},
+		{
+			"type": "zetaConnector",
+			"network": "bnb",
+			"address": "0x3Aa5ebB10DC797CAC828524e59A333d0A371443c"
+		},
+		{
+			"type": "gatewayEVM",
+			"network": "bnb",
+			"address": "0x68B1D87F95878fE05B998F19b66F4baba5De1aed"
+		},
+		{
+			"type": "custody",
+			"network": "bnb",
+			"address": "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d"
+		},
+		{
+			"type": "testEVMZeta",
+			"network": "bnb",
+			"address": "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1"
+		}
+	]
+}

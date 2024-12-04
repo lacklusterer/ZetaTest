@@ -78,7 +78,7 @@ contract ConnectedMod {
 
 	function hello(string memory message) external payable {
 		emit HelloEvent("Hello on EVM", message);
-		receiveQueue.push(message);
+		receiveQueue.push("hello");
 	}
 
 	function onCall(
