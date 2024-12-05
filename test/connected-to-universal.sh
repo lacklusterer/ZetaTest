@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+
 set -o allexport
 source "${SCRIPT_DIR}/../.env"
 set +o allexport
