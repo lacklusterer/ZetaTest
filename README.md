@@ -1,3 +1,5 @@
-# Hello Example
+Run (zsh or bash)
 
-Tutorial: https://www.zetachain.com/docs/developers/tutorials/call/
+```shell
+$ ./test/run.sh
+```
