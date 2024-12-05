@@ -1,16 +1,23 @@
 #!/bin/zsh
 
-echo "Attempting function calls"
+echo "Attempting function calls..."
 
 # npx hardhat call-function --network localhost
+UNIVERSAL_QUEUE=$(
 npx hardhat call-function \
 	--contract 0xc351628EB244ec633d5f21fBD6621e1a683B1181 \
 	--name UniversalMod \
 	--network localhost &
+)
 
+CONNECTED_QUEUE=$(
 npx hardhat call-function \
 	--contract 0xFD471836031dc5108809D173A067e8486B9047A3 \
 	--name ConnectedMod \
-	--network localhost
+	--network localhost &
+)
 
 wait
+
+echo "Universal Received Queue: ${UNIVERSAL_QUEUE}"
+echo "Connected Received Queue: ${CONNECTED_QUEUE}"
