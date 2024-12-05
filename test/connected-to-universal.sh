@@ -1,6 +1,19 @@
-echo "Sending message from connected to universal..."
+#!/bin/zsh
+
+set -o allexport
+source "${SCRIPT_DIR}/../.env"
+set +o allexport
+
+echo "Sending message "$1" from Connected Ethereum to Universal..."
 npx hardhat connected-call \
-	--contract 0xFD471836031dc5108809D173A067e8486B9047A3 \
-	--receiver 0xc351628EB244ec633d5f21fBD6621e1a683B1181 \
+	--contract $CONNECTEDMOD_ETHEREUM \
+	--receiver $UNIVERSALMOD_ZETACHAIN \
+	--network localhost \
+	--types '["string"]' $1
+
+echo "Sending message "$1" from Connected BNB to Universal..."
+npx hardhat connected-call \
+	--contract $CONNECTEDMOD_BNB \
+	--receiver $UNIVERSALMOD_ZETACHAIN \
 	--network localhost \
 	--types '["string"]' $1

@@ -1,14 +1,31 @@
 #!/bin/zsh
 
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+
+set -o allexport
+source "${SCRIPT_DIR}/../.env"
+set +o allexport
+
 if [ -z "$1" ]; then
 	echo "Example usage:
-$ ./universal-to-connected.sh example_message"
+$ ./test/universal-to-connected.sh example_message"
 else
-	echo "Sending message "$1" to Connected"
+	echo "Sending message "$1" from Universal to Connected on Ethereum..."
 	npx hardhat universal-withdraw-and-call \
-		--contract 0xc351628EB244ec633d5f21fBD6621e1a683B1181 \
-		--receiver 0xFD471836031dc5108809D173A067e8486B9047A3 \
-		--zrc20 0x2ca7d64A7EFE2D62A725E2B35Cf7230D6677FfEe \
+		--contract $UNIVERSALMOD_ZETACHAIN \
+		--receiver $CONNECTEDMOD_ETHEREUM \
+		--zrc20 $ZRC20_ETH_ON_5 \
+		--function "hello(string)" \
+		--amount 0.005 \
+		--network localhost \
+		--call-options-is-arbitrary-call \
+		--types '["string"]' $1
+
+	echo "Sending message "$1" from Universal to Connected on BNB..."
+	npx hardhat universal-withdraw-and-call \
+		--contract $UNIVERSALMOD_ZETACHAIN \
+		--receiver $CONNECTEDMOD_BNB \
+		--zrc20 $ZRC20_BNB_ON_97 \
 		--function "hello(string)" \
 		--amount 0.005 \
 		--network localhost \

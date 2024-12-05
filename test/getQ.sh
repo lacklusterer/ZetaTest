@@ -1,23 +1,39 @@
 #!/bin/zsh
 
-echo "Attempting function calls..."
+set -o allexport
+source "${SCRIPT_DIR}/../.env"
+set +o allexport
 
-# npx hardhat call-function --network localhost
-UNIVERSAL_QUEUE=$(
-npx hardhat call-function \
-	--contract 0xc351628EB244ec633d5f21fBD6621e1a683B1181 \
-	--name UniversalMod \
-	--network localhost &
-)
+echo "Getting received queues..."
 
-CONNECTED_QUEUE=$(
-npx hardhat call-function \
-	--contract 0xFD471836031dc5108809D173A067e8486B9047A3 \
-	--name ConnectedMod \
-	--network localhost &
-)
+( 
+	UNIVERSAL_QUEUE=$(
+		npx hardhat call-function \
+			--contract $UNIVERSALMOD_ZETACHAIN \
+			--name UniversalMod \
+			--network localhost
+	)
+	echo "Universal Received Queue: ${UNIVERSAL_QUEUE}"
+) &
+
+( 
+	ETHEREUM_QUEUE=$(
+		npx hardhat call-function \
+			--contract $CONNECTEDMOD_ETHEREUM \
+			--name ConnectedMod \
+			--network localhost
+	) 
+	echo "Ethereum Received Queue: ${ETHEREUM_QUEUE}"
+) &
+
+( 
+	BNB_QUEUE=$(
+		npx hardhat call-function \
+			--contract $CONNECTEDMOD_BNB \
+			--name ConnectedMod \
+			--network localhost
+	)
+echo "BNB Received Queue: ${BNB_QUEUE}"
+) &
 
 wait
-
-echo "Universal Received Queue: ${UNIVERSAL_QUEUE}"
-echo "Connected Received Queue: ${CONNECTED_QUEUE}"

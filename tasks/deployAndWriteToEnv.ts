@@ -25,6 +25,7 @@ const updateEnvFile = (key: string, value: string) => {
 
 const main = async (args: any, hre: HardhatRuntimeEnvironment) => {
 	const network = hre.network.name;
+	const chain = args.chain;
 
 	const [signer] = await hre.ethers.getSigners();
 	if (signer === undefined) {
@@ -45,7 +46,7 @@ const main = async (args: any, hre: HardhatRuntimeEnvironment) => {
 	};
 
 	// environment variable key
-	const envKey = `${args.name.toUpperCase()}_${network.toUpperCase()}`;
+	const envKey = `${args.name.toUpperCase()}_${chain.toUpperCase()}`;
 	updateEnvFile(envKey, contract.address);
 
 	if (args.json) {
@@ -66,4 +67,5 @@ task("deploy-2-env", "Deploy the contract and write to .env", main)
 		"gateway",
 		"Gateway address (default: ZetaChain Gateway on testnet)",
 		"0x6c533f7fe93fae114d0954697069df33c9b74fd7"
-	);
+	)
+	.addOptionalParam("chain", "Target chain name", "localhost");
